@@ -43,7 +43,10 @@ insert goal a (Heap arr') = go (Array.length arr') (Array.snoc arr' a)
 
 -- Time Complexity: O(n)
 fromArray :: forall a. (a -> a -> Boolean) -> Array a -> Heap a
-fromArray goal arr = Heap (Array.foldl (heapify goal) arr (Array.range (Array.length arr / 2) 0))
+fromArray goal arr' = Heap (go (Array.length arr' / 2) arr')
+  where
+  go ix arr | ix < 0 = arr
+  go ix arr = go (ix - 1) (heapify goal arr ix)
 
 -- Time Complexity: O(log(n))
 extract :: forall a. (a -> a -> Boolean) -> Heap a -> Tuple (Maybe a) (Heap a)
