@@ -1,3 +1,10 @@
+-- @inline export insert arity=1
+-- @inline export extract arity=1
+-- @inline export fromArray arity=1
+-- @inline export head always
+-- @inline export size always
+-- @inline export isEmpty always
+-- @inline export toArray always
 module Data.Heap.Internal
   ( Heap
   , insert
